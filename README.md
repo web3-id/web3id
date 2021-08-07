@@ -46,7 +46,7 @@ silahkan email kami [dev@blockchains.studio](mailto:dev.blockchain.studio@gmail.
 
 ## License
 
-[MIT License](https://github.com/Blockchains-Studio/frontend-blockchain-studio-indonesia/blob/main/LICENSE).
+[MIT License](https://github.com/Blockchains-Studio/blockchain-studio-indonesia/blob/main/LICENSE).
 
 # OUR SPONSOR AND PARTNER
 
