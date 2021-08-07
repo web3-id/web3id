@@ -44,6 +44,9 @@ Anda dapat mulai mendaftar administrator kemudian mengedit dan menambahkan konte
 ## Cara Berkontribusi Tulisan / Artikel (How To Contribution)
 silahkan email kami [dev@blockchains.studio](mailto:dev.blockchain.studio@gmail.com)
 
+## License
+
+[MIT License](https://github.com/Blockchains-Studio/frontend-blockchain-studio-indonesia/blob/main/LICENSE).
 
 # OUR SPONSOR AND PARTNER
 
