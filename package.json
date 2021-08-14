@@ -26,6 +26,11 @@
     "strapi-plugin-upload": "3.6.6",
     "strapi-plugin-users-permissions": "3.6.6",
     "strapi-provider-upload-cloudinary": "3.6.6",
+    "strapi-plugin-oembed": "^0.4.0",
+    "strapi-plugin-responsive-image": "^0.4.0",
+    "strapi-plugin-sync-roles-permissions": "^0.4.3",
+    "strapi-plugin-users-permissions": "3.6.6",
+    "strapi-plugin-zeasy-image-api": "^1.2.1",
     "strapi-utils": "3.6.6"
   },
   "author": {
