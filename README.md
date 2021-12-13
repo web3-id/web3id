@@ -51,3 +51,5 @@ silahkan email kami [dev@blockchains.studio](mailto:dev.blockchain.studio@gmail.
 # OUR SPONSOR AND PARTNER
 
 [Near Protocol](https://near.org/) adalah platform aplikasi terdesentralisasi yang cukup aman untuk mengelola aset bernilai tinggi seperti uang atau identitas dan cukup berkinerja untuk membuat mereka berguna untuk orang sehari-hari, menempatkan kekuatan dari web terbuka di tangan mereka.
+
+[dGRANTS](https://grants.gtcdao.net/#/) adalah platform Hibah Terdesentralisasi Memfasilitasi pengembang open source membuat hibah untuk mengumpulkan kontribusi dengan cara yang terdesentralisasi.
