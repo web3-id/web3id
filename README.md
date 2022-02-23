@@ -1,4 +1,4 @@
-# Blockchain Studio Indonesia
+# Web 3 Indonesia
 We are Educational And Open Course To Making Understand All About Protocol Blockchain For Indonesia
 
 ## Features
