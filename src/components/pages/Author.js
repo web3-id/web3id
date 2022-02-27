@@ -1,21 +1,34 @@
-import React from "react";
-import ColumnZero from '../components/ColumnZero';
-import ColumnZeroTwo from '../components/ColumnZeroTwo';
-import ColumnZeroThree from '../components/ColumnZeroThree';
+import React, { memo, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import ColumnNewRedux from '../components/ColumnNewRedux';
 import Footer from '../components/footer';
 import { createGlobalStyle } from 'styled-components';
+import * as selectors from '../../store/selectors';
+import { fetchAuthorList } from "../../store/actions/thunks";
+import api from "../../core/api";
 
 const GlobalStyles = createGlobalStyle`
   header#myHeader.navbar.white {
-    background: #212428;
+    background: #fff;
+  }
+  @media only screen and (max-width: 1199px) {
+    .navbar{
+      background: #403f83;
+    }
+    .navbar .menu-line, .navbar .menu-line1, .navbar .menu-line2{
+      background: #111;
+    }
+    .item-dropdown .dropdown a{
+      color: #111 !important;
+    }
   }
 `;
 
-const Colection= function() {
+const Colection = ({ authorId }) => {
 const [openMenu, setOpenMenu] = React.useState(true);
 const [openMenu1, setOpenMenu1] = React.useState(false);
 const [openMenu2, setOpenMenu2] = React.useState(false);
-const handleBtnClick = (): void => {
+const handleBtnClick = () => {
   setOpenMenu(!openMenu);
   setOpenMenu1(false);
   setOpenMenu2(false);
@@ -23,7 +36,7 @@ const handleBtnClick = (): void => {
   document.getElementById("Mainbtn1").classList.remove("active");
   document.getElementById("Mainbtn2").classList.remove("active");
 };
-const handleBtnClick1 = (): void => {
+const handleBtnClick1 = () => {
   setOpenMenu1(!openMenu1);
   setOpenMenu2(false);
   setOpenMenu(false);
@@ -31,7 +44,7 @@ const handleBtnClick1 = (): void => {
   document.getElementById("Mainbtn").classList.remove("active");
   document.getElementById("Mainbtn2").classList.remove("active");
 };
-const handleBtnClick2 = (): void => {
+const handleBtnClick2 = () => {
   setOpenMenu2(!openMenu2);
   setOpenMenu(false);
   setOpenMenu1(false);
@@ -40,26 +53,39 @@ const handleBtnClick2 = (): void => {
   document.getElementById("Mainbtn1").classList.remove("active");
 };
 
+const dispatch = useDispatch();
+const authorsState = useSelector(selectors.authorsState);
+const author = authorsState.data ? authorsState.data[0] : {};
 
+useEffect(() => {
+  dispatch(fetchAuthorList(authorId));
+}, [dispatch, authorId]);
 
 return (
 <div>
 <GlobalStyles/>
+  { author.banner && 
+    <section id='profile_banner' className='jumbotron breadcumb no-bg' style={{backgroundImage: `url(${api.baseUrl + author.banner.url})`}}>
+      <div className='mainbreadcumb'>
+      </div>
+    </section>
+  }
 
   <section className='container no-bottom'>
     <div className='row'>
-      <div className='spacer-double'></div>
       <div className="col-md-12">
          <div className="d_profile de-flex">
               <div className="de-flex-col">
                   <div className="profile_avatar">
-                      <img src="./img/author_single/author_thumbnail.jpg" alt=""/>
+                    { author.avatar && 
+                      <img src={api.baseUrl + author.avatar.url} alt=""/>
+                    }
                       <i className="fa fa-check"></i>
                       <div className="profile_name">
                           <h4>
-                              Monica Lucas                                                
-                              <span className="profile_username">@monicaaa</span>
-                              <span id="wallet" className="profile_wallet">DdzFFzCqrhshMSxb9oW3mRo4MJrQkusV3fGFSTwaiu4wPBqMryA9DYVJCkW9n7twCffG5f5wX2sSkoDXGiZB1HPa7K7f865Kk4LqnrME</span>
+                            {author.username}                                          
+                              <span className="profile_username">{author.social}</span>
+                              <span id="wallet" className="profile_wallet">{author.wallet}</span>
                               <button id="btn_copy" title="Copy Text">Copy</button>
                           </h4>
                       </div>
@@ -67,7 +93,7 @@ return (
               </div>
               <div className="profile_follow de-flex">
                   <div className="de-flex-col">
-                      <div className="profile_follower">500 followers</div>
+                      <div className="profile_follower">{author.followers} followers</div>
                   </div>
                   <div className="de-flex-col">
                       <span className="btn-main">Follow</span>
@@ -91,19 +117,19 @@ return (
             </div>
           </div>
         </div>
-      {openMenu && (  
+      {openMenu && author.id && (  
         <div id='zero1' className='onStep fadeIn'>
-         <ColumnZero/>
+         <ColumnNewRedux shuffle showLoadMore={false} authorId={author.id}/>
         </div>
       )}
-      {openMenu1 && ( 
+      {openMenu1 && author.id && ( 
         <div id='zero2' className='onStep fadeIn'>
-         <ColumnZeroTwo/>
+         <ColumnNewRedux shuffle showLoadMore={false} authorId={author.id}/>
         </div>
       )}
       {openMenu2 && ( 
         <div id='zero3' className='onStep fadeIn'>
-         <ColumnZeroThree/>
+         <ColumnNewRedux shuffle showLoadMore={false}/>
         </div>
       )}
       </section>
@@ -113,4 +139,4 @@ return (
 </div>
 );
 }
-export default Colection;
+export default memo(Colection);

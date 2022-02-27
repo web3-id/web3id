@@ -32,28 +32,28 @@ const Header= function() {
     const [openMenu1, setOpenMenu1] = React.useState(false);
     const [openMenu2, setOpenMenu2] = React.useState(false);
     const [openMenu3, setOpenMenu3] = React.useState(false);
-    const handleBtnClick = (): void => {
+    const handleBtnClick = () => {
       setOpenMenu(!openMenu);
     };
-    const handleBtnClick1 = (): void => {
+    const handleBtnClick1 = () => {
       setOpenMenu1(!openMenu1);
     };
-    const handleBtnClick2 = (): void => {
+    const handleBtnClick2 = () => {
       setOpenMenu2(!openMenu2);
     };
-    const handleBtnClick3 = (): void => {
+    const handleBtnClick3 = () => {
       setOpenMenu3(!openMenu3);
     };
-    const closeMenu = (): void => {
+    const closeMenu = () => {
       setOpenMenu(false);
     };
-    const closeMenu1 = (): void => {
+    const closeMenu1 = () => {
       setOpenMenu1(false);
     };
-    const closeMenu2 = (): void => {
+    const closeMenu2 = () => {
       setOpenMenu2(false);
     };
-    const closeMenu3 = (): void => {
+    const closeMenu3 = () => {
       setOpenMenu3(false);
     };
     const ref = useOnclickOutside(() => {
@@ -99,17 +99,22 @@ const Header= function() {
               <div className='navbar-title navbar-item'>
                 <NavLink to="/">
                 <img
-                    src="./img/logo-3.png"
+                    src="/img/logo.png"
                     className="img-fluid d-block"
                     alt="#"
                   />
                   <img
-                    src="./img/logo-3.png"
+                    src="/img/logo-2.png"
                     className="img-fluid d-3"
                     alt="#"
                   />
                   <img
-                    src="./img/logo-light.png"
+                    src="/img/logo-3.png"
+                    className="img-fluid d-4"
+                    alt="#"
+                  />
+                  <img
+                    src="/img/logo-light.png"
                     className="img-fluid d-none"
                     alt="#"
                   />
@@ -127,19 +132,23 @@ const Header= function() {
                   <div className='menu'>
                     <div className='navbar-item'>
                       <div ref={ref}>
-                        <div className="navbar-item" 
+                        <div className="dropdown-custom dropdown-toggle btn" 
                           onClick={handleBtnClick}
                           >
                           Home
                         </div>
                         {openMenu && (
-                          <div className='navbar-item'>
-                            {/* <div className="dropdown" onClick={closeMenu}> */}
-                              <NavLink to="/home" onClick={() => btn_icon(!showmenu)}>Home</NavLink>
-                              {/* <NavLink to="/home1" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink>
-                              <NavLink to="/home2" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink> */}
+                          <div className='item-dropdown'>
+                            <div className="dropdown" onClick={closeMenu}>
+                              <NavLink to="/homeGrey" onClick={() => btn_icon(!showmenu)}>Homepage Grey</NavLink>
+                              <NavLink to="/" onClick={() => btn_icon(!showmenu)}>Homepage</NavLink>
+                              <NavLink to="/home1" onClick={() => btn_icon(!showmenu)}>Homepage 1</NavLink>
+                              <NavLink to="/home1Grey" onClick={() => btn_icon(!showmenu)}>Homepage 1 Grey</NavLink>
+                              <NavLink to="/home2" onClick={() => btn_icon(!showmenu)}>Homepage 2</NavLink>
+                              <NavLink to="/home2Grey" onClick={() => btn_icon(!showmenu)}>Homepage 2 Grey</NavLink>
+                              <NavLink to="/home3" onClick={() => btn_icon(!showmenu)}>Homepage 3</NavLink>
                             </div>
-                          // </div>
+                          </div>
                         )}
                       </div>
                     </div>
@@ -156,9 +165,11 @@ const Header= function() {
                               <NavLink to="/explore" onClick={() => btn_icon(!showmenu)}>Explore</NavLink>
                               <NavLink to="/explore2" onClick={() => btn_icon(!showmenu)}>Explore 2</NavLink>
                               <NavLink to="/rangking" onClick={() => btn_icon(!showmenu)}>Rangking</NavLink>
-                              <NavLink to="/colection" onClick={() => btn_icon(!showmenu)}>Collection</NavLink>
-                              <NavLink to="/ItemDetail" onClick={() => btn_icon(!showmenu)}>Items Details</NavLink>
+                              <NavLink to="/colection/1" onClick={() => btn_icon(!showmenu)}>Collection</NavLink>
+                              <NavLink to="/ItemDetail/1" onClick={() => btn_icon(!showmenu)}>Items Details</NavLink>
+                              <NavLink to="/ItemDetailGrey/1" onClick={() => btn_icon(!showmenu)}>Items Details Grey</NavLink>
                               <NavLink to="/Auction" onClick={() => btn_icon(!showmenu)}>Live Auction</NavLink>
+                              <NavLink to="/AuctionGrey" onClick={() => btn_icon(!showmenu)}>Live Auction Grey</NavLink>
                               <NavLink to="/helpcenter" onClick={() => btn_icon(!showmenu)}>Help Center</NavLink>
                             </div>
                           </div>
@@ -175,9 +186,14 @@ const Header= function() {
                         {openMenu2 && (
                           <div className='item-dropdown'>
                             <div className="dropdown" onClick={closeMenu2}>
-                              <NavLink to="/Author" onClick={() => btn_icon(!showmenu)}>Author</NavLink>
+                              <NavLink to="/Author/1" onClick={() => btn_icon(!showmenu)}>Author</NavLink>
+                              <NavLink to="/AuthorGrey/1" onClick={() => btn_icon(!showmenu)}>Author Grey</NavLink>
                               <NavLink to="/wallet" onClick={() => btn_icon(!showmenu)}>Wallet</NavLink>
                               <NavLink to="/create" onClick={() => btn_icon(!showmenu)}>Create</NavLink>
+                              <NavLink to="/create2" onClick={() => btn_icon(!showmenu)}>Create 2</NavLink>
+                              <NavLink to="/createOptions" onClick={() => btn_icon(!showmenu)}>Create options</NavLink>
+                              <NavLink to="/mint" onClick={() => btn_icon(!showmenu)}>Nft Minting</NavLink>
+                              <NavLink to="/minter" onClick={() => btn_icon(!showmenu)}>Nft Minting Grey</NavLink>
                               <NavLink to="/news" onClick={() => btn_icon(!showmenu)}>News</NavLink>
                               <NavLink to="/works" onClick={() => btn_icon(!showmenu)}>Gallery</NavLink>
                               <NavLink to="/login" onClick={() => btn_icon(!showmenu)}>login</NavLink>
@@ -232,9 +248,13 @@ const Header= function() {
                             {openMenu && (
                             <div className='item-dropdown'>
                               <div className="dropdown" onClick={closeMenu}>
-                                {/* <NavLink to="/">Homepage</NavLink> */}
-                                {/* <NavLink to="/home1">Homepage 1</NavLink>
-                                <NavLink to="/home2">Homepage 2</NavLink> */}
+                                <NavLink to="/homeGrey">Homepage Grey</NavLink>
+                                <NavLink to="/">Homepage</NavLink>
+                                <NavLink to="/home1">Homepage 1</NavLink>
+                                <NavLink to="/home1Grey">Homepage 1 Grey</NavLink>
+                                <NavLink to="/home2">Homepage 2</NavLink>
+                                <NavLink to="/home2Grey">Homepage 2 Grey</NavLink>
+                                <NavLink to="/home3">Homepage 3</NavLink>
                               </div>
                             </div>
                           )}
@@ -252,12 +272,19 @@ const Header= function() {
                             <div className='item-dropdown'>
                               <div className="dropdown" onClick={closeMenu1}>
                               <NavLink to="/explore">Explore</NavLink>
+                              <NavLink to="/exploreGrey">Explore Grey</NavLink>
                               <NavLink to="/explore2">Explore 2</NavLink>
+                              <NavLink to="/explore2Grey">Explore 2 Grey</NavLink>
                               <NavLink to="/rangking">Rangking</NavLink>
-                              <NavLink to="/colection">Collection</NavLink>
-                              <NavLink to="/ItemDetail">Items Details</NavLink>
+                              <NavLink to="/rangkingGrey">Rangking Grey</NavLink>
+                              <NavLink to="/colection/1">Collection</NavLink>
+                              <NavLink to="/colectionGrey/1">Collection Grey</NavLink>
+                              <NavLink to="/ItemDetail/1">Items Details</NavLink>
+                              <NavLink to="/ItemDetailGrey/1">Items Details Grey</NavLink>
                               <NavLink to="/Auction">Live Auction</NavLink>
+                              <NavLink to="/AuctionGrey">Live Auction Grey</NavLink>
                               <NavLink to="/helpcenter">Help Center</NavLink>
+                              <NavLink to="/helpcenterGrey">Help Center Grey</NavLink>
                               </div>
                             </div>
                           )}
@@ -274,9 +301,15 @@ const Header= function() {
                             {openMenu2 && (
                             <div className='item-dropdown'>
                               <div className="dropdown" onClick={closeMenu2}>
-                              <NavLink to="/Author">Author</NavLink>
+                              <NavLink to="/Author/1">Author</NavLink>
+                              <NavLink to="/AuthorGrey/1">Author Grey</NavLink>
                               <NavLink to="/wallet">Wallet</NavLink>
                               <NavLink to="/create">Create</NavLink>
+                              <NavLink to="/createGrey">Create Grey</NavLink>
+                              <NavLink to="/create2">Create 2</NavLink>
+                              <NavLink to="/createOptions">Create Option</NavLink>
+                              <NavLink to="/mint">Nft Minting</NavLink>
+                              <NavLink to="/minter">Nft Minting Grey</NavLink>
                               <NavLink to="/news">News</NavLink>
                               <NavLink to="/works">Gallery</NavLink>
                               <NavLink to="/login">login</NavLink>
